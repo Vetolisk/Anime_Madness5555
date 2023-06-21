@@ -8,6 +8,7 @@ namespace KinematicCharacterController.Examples
 {
     public class ExamplePlayer : MonoBehaviour
     {
+        public GameObject UITarget;
         public ExampleCharacterController Character;
         public ExampleCharacterCamera CharacterCamera;
 
@@ -19,6 +20,7 @@ namespace KinematicCharacterController.Examples
 
         private void Start()
         {
+            UITarget.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
 
             // Tell camera to follow transform
@@ -76,7 +78,17 @@ namespace KinematicCharacterController.Examples
             // Handle toggling zoom level
             if (Input.GetMouseButtonDown(1))
             {
-                CharacterCamera.TargetDistance = (CharacterCamera.TargetDistance == 0f) ? CharacterCamera.DefaultDistance : 0f;
+                if(CharacterCamera.TargetDistance == 1.7f ){
+                    CharacterCamera.TargetDistance=CharacterCamera.DefaultDistance;
+                    CharacterCamera.FollowPointFraming= new Vector2(0f,0f);
+                    UITarget.SetActive(false);
+                }else{
+                    CharacterCamera.TargetDistance =1.7f;
+                    CharacterCamera.FollowPointFraming= new Vector2(0.8f,0f);
+                    UITarget.SetActive(true);
+                }
+                //CharacterCamera.TargetDistance = (CharacterCamera.TargetDistance == 1.5f) ? CharacterCamera.DefaultDistance : 1.5f;
+                Debug.Log("Click!");
             }
         }
 

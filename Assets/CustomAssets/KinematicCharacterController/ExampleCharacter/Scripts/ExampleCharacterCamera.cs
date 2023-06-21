@@ -42,9 +42,11 @@ namespace KinematicCharacterController.Examples
         public Transform FollowTransform { get; private set; }
 
         public Vector3 PlanarDirection { get; set; }
+
         public float TargetDistance { get; set; }
 
         private bool _distanceIsObstructed;
+        [SerializeField]
         private float _currentDistance;
         private float _targetVerticalAngle;
         private RaycastHit _obstructionHit;
