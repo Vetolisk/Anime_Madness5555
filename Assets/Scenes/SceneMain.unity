@@ -9182,7 +9182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1683178342
 Transform:
   m_ObjectHideFlags: 0
@@ -9421,6 +9421,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4759535396532266316, guid: 18b7190054e904543a5177885002b92f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5625607598028236003, guid: 18b7190054e904543a5177885002b92f,
         type: 3}
       propertyPath: m_Name
@@ -9562,6 +9567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76020eee813ed7844bcea94c5d5ce76a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 1266135783}
   Motor: {fileID: 2431268700840929996}
   MaxStableMoveSpeed: 10
   StableMovementSharpness: 15

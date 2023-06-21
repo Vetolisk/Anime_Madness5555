@@ -42,6 +42,13 @@ namespace KinematicCharacterController.Examples
 
     public class ExampleCharacterController : MonoBehaviour, ICharacterController
     {
+        [Header("Animator")]
+        public Animator anim;
+        static int idleState = Animator.StringToHash ("Base Layer.Idle");
+		static int locoState = Animator.StringToHash ("Base Layer.Locomotion");
+		static int jumpState = Animator.StringToHash ("Base Layer.Jump");
+		static int restState = Animator.StringToHash ("Base Layer.Rest");
+        private AnimatorStateInfo currentBaseState;	
         public KinematicCharacterMotor Motor;
 
         [Header("Stable Movement")]
@@ -301,6 +308,8 @@ namespace KinematicCharacterController.Examples
 
                             // Smooth movement Velocity
                             currentVelocity = Vector3.Lerp(currentVelocity, targetMovementVelocity, 1f - Mathf.Exp(-StableMovementSharpness * deltaTime));
+                            anim.SetFloat ("Speed", currentVelocityMagnitude);	
+                            currentBaseState = anim.GetCurrentAnimatorStateInfo (0);
                         }
                         // Air movement
                         else
@@ -354,9 +363,11 @@ namespace KinematicCharacterController.Examples
                         _timeSinceJumpRequested += deltaTime;
                         if (_jumpRequested)
                         {
+                            
                             // See if we actually are allowed to jump
                             if (!_jumpConsumed && ((AllowJumpingWhenSliding ? Motor.GroundingStatus.FoundAnyGround : Motor.GroundingStatus.IsStableOnGround) || _timeSinceLastAbleToJump <= JumpPostGroundingGraceTime))
                             {
+                                anim.SetBool ("Jump", _jumpRequested);
                                 // Calculate jump direction before ungrounding
                                 Vector3 jumpDirection = Motor.CharacterUp;
                                 if (Motor.GroundingStatus.FoundAnyGround && !Motor.GroundingStatus.IsStableOnGround)
@@ -371,9 +382,11 @@ namespace KinematicCharacterController.Examples
                                 // Add to the return velocity and reset jump state
                                 currentVelocity += (jumpDirection * JumpUpSpeed) - Vector3.Project(currentVelocity, Motor.CharacterUp);
                                 currentVelocity += (_moveInputVector * JumpScalableForwardSpeed);
+                                 
                                 _jumpRequested = false;
                                 _jumpConsumed = true;
                                 _jumpedThisFrame = true;
+                                 
                             }
                         }
 
@@ -412,6 +425,7 @@ namespace KinematicCharacterController.Examples
                                 if (!_jumpedThisFrame)
                                 {
                                     _jumpConsumed = false;
+                                    anim.SetBool ("Jump", _jumpRequested);
                                 }
                                 _timeSinceLastAbleToJump = 0f;
                             }
