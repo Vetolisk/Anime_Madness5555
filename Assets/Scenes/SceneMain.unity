@@ -9570,7 +9570,7 @@ MonoBehaviour:
   anim: {fileID: 1266135783}
   Motor: {fileID: 2431268700840929996}
   MaxStableMoveSpeed: 10
-  StableMovementSharpness: 15
+  StableMovementSharpness: 10
   OrientationSharpness: 20
   OrientationMethod: 1
   MaxAirMoveSpeed: 10
@@ -9677,9 +9677,9 @@ MonoBehaviour:
   Camera: {fileID: 3990394297565508245}
   FollowPointFraming: {x: 0, y: 0}
   FollowingSharpness: 1e+9
-  DefaultDistance: 6
+  DefaultDistance: 3
   MinDistance: 0
-  MaxDistance: 10
+  MaxDistance: 3
   DistanceMovementSpeed: 5
   DistanceMovementSharpness: 10
   InvertX: 0
