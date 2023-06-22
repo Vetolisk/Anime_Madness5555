@@ -12,6 +12,8 @@ public class RaycastWeapon : MonoBehaviour
     }
     public bool isFiring=false;
     public int fireRate =25;
+    [SerializeField]
+    public float damage =10;
     public float bulletSpeed =1000.0f;
     public float bulletDrop = 0.0f;
     public ParticleSystem[] _muzzleFlash;
@@ -20,6 +22,7 @@ public class RaycastWeapon : MonoBehaviour
     public Transform _raycastOrigin;
 
     public Transform raycastDestination;
+    
     Ray _ray;
     RaycastHit _hitInfo;
     float accumulatedTime;
@@ -82,6 +85,10 @@ public class RaycastWeapon : MonoBehaviour
             hitEffect.Emit(1);
             bullet.tracer.transform.position=_hitInfo.point;
             bullet.time = maxLifeTime;
+            var hitBox = _hitInfo.collider.GetComponent<HitBox>();
+            if(hitBox){
+                hitBox.OnRaycastHit(this,_ray.direction);
+            }
         }else{
             bullet.tracer.transform.position=end;
         }
