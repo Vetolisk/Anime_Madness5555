@@ -8,6 +8,7 @@ namespace KinematicCharacterController.Examples
 {
     public class ExamplePlayer : MonoBehaviour
     {
+        public RaycastWeapon weapon;
         public GameObject UITarget;
         public ExampleCharacterController Character;
         public ExampleCharacterCamera CharacterCamera;
@@ -20,6 +21,7 @@ namespace KinematicCharacterController.Examples
 
         private void Start()
         {
+            // weapon = GetComponentInChildren<RaycastWeapon>();
             UITarget.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
 
@@ -51,6 +53,18 @@ namespace KinematicCharacterController.Examples
             }
 
             HandleCameraInput();
+             if (Input.GetMouseButtonDown(0))
+            {
+               weapon.StartFiring();
+                Debug.Log("Fire!");
+            }
+            if(weapon.isFiring){
+                weapon.UpdateFiring(Time.deltaTime);
+            }
+            weapon.UpdateBullets(Time.deltaTime);
+            if(Input.GetMouseButtonUp(0)){
+                weapon.StopFiring();
+            }
         }
 
         private void HandleCameraInput()
@@ -90,7 +104,9 @@ namespace KinematicCharacterController.Examples
                 //CharacterCamera.TargetDistance = (CharacterCamera.TargetDistance == 1.5f) ? CharacterCamera.DefaultDistance : 1.5f;
                 Debug.Log("Click!");
             }
+            
         }
+        
 
         private void HandleCharacterInput()
         {

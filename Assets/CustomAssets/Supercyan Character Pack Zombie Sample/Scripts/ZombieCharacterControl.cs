@@ -14,6 +14,9 @@ public class ZombieCharacterControl : MonoBehaviour
         Direct
     }
 
+    [SerializeField] public float _startHealth;
+     private float _health;
+    [SerializeField] private float currentHealth;
     [SerializeField] private float m_moveSpeed = 2;
     [SerializeField] private float m_turnSpeed = 200;
 
@@ -31,13 +34,25 @@ public class ZombieCharacterControl : MonoBehaviour
 
     private void Awake()
     {
+        _health=_startHealth;
         if (!m_animator) { gameObject.GetComponent<Animator>(); }
         if (!m_rigidBody) { gameObject.GetComponent<Animator>(); }
     }
 
+     public void TakeDamage(float damage)
+    {
+        //stopTime = startStopTime;
+        //Instantiate(DethEffect, transform.position, Quaternion.identity);
+        currentHealth -= damage;
+        //healthBar.SetHealth(currentHealth);
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);     
+        }
+    }
     private void FixedUpdate()
     {
-        switch (m_controlMode)
+        /*switch (m_controlMode)
         {
             case ControlMode.Direct:
                 DirectUpdate();
@@ -50,7 +65,7 @@ public class ZombieCharacterControl : MonoBehaviour
             default:
                 Debug.LogError("Unsupported state");
                 break;
-        }
+        }*/
     }
 
     private void TankUpdate()
