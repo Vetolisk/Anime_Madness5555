@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    
     public float maxHealth;
     public Animator anim;
     [HideInInspector]
@@ -20,6 +21,7 @@ public class Health : MonoBehaviour
             Die();
         }
     }
+    
     public void Die(){
         anim.SetTrigger("Dead");
         Invoke("DestroyObj",2);

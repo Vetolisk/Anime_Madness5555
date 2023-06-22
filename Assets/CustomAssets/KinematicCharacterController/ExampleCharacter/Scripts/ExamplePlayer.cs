@@ -10,6 +10,7 @@ namespace KinematicCharacterController.Examples
     {
         public RaycastWeapon weapon;
         public GameObject UITarget;
+        public GameObject UITargetHair;
         public ExampleCharacterController Character;
         public ExampleCharacterCamera CharacterCamera;
 
@@ -23,6 +24,7 @@ namespace KinematicCharacterController.Examples
         {
             // weapon = GetComponentInChildren<RaycastWeapon>();
             UITarget.SetActive(false);
+            UITargetHair.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
 
             // Tell camera to follow transform
@@ -92,13 +94,13 @@ namespace KinematicCharacterController.Examples
             // Handle toggling zoom level
             if (Input.GetMouseButtonDown(1))
             {
-                if(CharacterCamera.TargetDistance == 1.7f ){
+                if(CharacterCamera.TargetDistance == 1f ){
                     CharacterCamera.TargetDistance=CharacterCamera.DefaultDistance;
                     CharacterCamera.FollowPointFraming= new Vector2(0f,0f);
                     UITarget.SetActive(false);
                 }else{
-                    CharacterCamera.TargetDistance =1.7f;
-                    CharacterCamera.FollowPointFraming= new Vector2(0.8f,0f);
+                    CharacterCamera.TargetDistance =1f;
+                    CharacterCamera.FollowPointFraming= new Vector2(0.3f,0f);
                     UITarget.SetActive(true);
                 }
                 //CharacterCamera.TargetDistance = (CharacterCamera.TargetDistance == 1.5f) ? CharacterCamera.DefaultDistance : 1.5f;

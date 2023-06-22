@@ -457,6 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 533406947}
+  UITargetHair: {fileID: 0}
 --- !u!114 &533406947
 MonoBehaviour:
   m_ObjectHideFlags: 0
