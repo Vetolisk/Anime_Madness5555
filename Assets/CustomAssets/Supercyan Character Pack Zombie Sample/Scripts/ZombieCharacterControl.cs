@@ -49,7 +49,7 @@ public class ZombieCharacterControl : MonoBehaviour
     }*/
     private void FixedUpdate()
     {
-        /*switch (m_controlMode)
+        switch (m_controlMode)
         {
             case ControlMode.Direct:
                 DirectUpdate();
@@ -62,7 +62,7 @@ public class ZombieCharacterControl : MonoBehaviour
             default:
                 Debug.LogError("Unsupported state");
                 break;
-        }*/
+        }
     }
 
     private void TankUpdate()

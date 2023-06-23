@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RaycastWeapon : MonoBehaviour
 {
@@ -88,6 +89,7 @@ public class RaycastWeapon : MonoBehaviour
             var hitBox = _hitInfo.collider.GetComponent<HitBox>();
             if(hitBox){
                 hitBox.OnRaycastHit(this,_ray.direction);
+                Debug.Log(hitBox.name);
             }
         }else{
             bullet.tracer.transform.position=end;

@@ -10,7 +10,6 @@ namespace KinematicCharacterController.Examples
     {
         public RaycastWeapon weapon;
         public GameObject UITarget;
-        public GameObject UITargetHair;
         public ExampleCharacterController Character;
         public ExampleCharacterCamera CharacterCamera;
 
@@ -24,7 +23,6 @@ namespace KinematicCharacterController.Examples
         {
             // weapon = GetComponentInChildren<RaycastWeapon>();
             UITarget.SetActive(false);
-            UITargetHair.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
 
             // Tell camera to follow transform

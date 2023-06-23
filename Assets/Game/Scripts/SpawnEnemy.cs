@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro; 
 
+
 public class SpawnEnemy : MonoBehaviour
 {
     private int CountEnemies=0;
@@ -12,6 +13,10 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] private GameObject preabEnemy;
     private float timeRemaining;
    [SerializeField] private float oldtime;
+   [HideInInspector]  Vector3 RandomPos;
+    [SerializeField] private int  XposStart,XposEnd,ZposStart,ZposEnd;
+    [SerializeField] private float Y;
+    
     // Start is called before the first frame update
      private void Start()
     {
@@ -58,13 +63,11 @@ public class SpawnEnemy : MonoBehaviour
     }
     public void CreateEnemy(){
         // 25 1.25 35 + 25 1.25 45 + 35 1.25 45 + 35 1.25 35
-            int RandomX = Random.Range(25,40);
-            int RandomZ = Random.Range(25,50);
-            Vector3 RandomPos = new Vector3(RandomX, 2.0f,RandomZ);
+            int RandomX = Random.Range(XposStart,XposEnd);
+            int RandomZ = Random.Range(ZposStart,ZposEnd);
+             RandomPos = new Vector3(RandomX, Y,RandomZ);
             ParticleSystem Ps = Instantiate(ps, RandomPos, Quaternion.identity) as ParticleSystem;
-            GameObject CloneEnemy = Instantiate(preabEnemy, RandomPos, Quaternion.identity) as GameObject;
-            CloneEnemy.name = "Bot";
-            CountEnemies++;
+            Invoke("CreateZombie",1.0f);
             if (CountEnemies > CountE && oldtime >= 20)
             {
                 CountE += 5;
@@ -73,6 +76,11 @@ public class SpawnEnemy : MonoBehaviour
 
             }
             timeRemaining = oldtime;
+    }
+    public void CreateZombie(){
+         GameObject CloneEnemy = Instantiate(preabEnemy, RandomPos, Quaternion.identity) as GameObject;
+            CloneEnemy.name = "Bot";
+            CountEnemies++;
     }
     void updateTimer(float currentTime)
     {

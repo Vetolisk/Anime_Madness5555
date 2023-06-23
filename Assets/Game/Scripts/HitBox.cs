@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class HitBox : MonoBehaviour
 {
     public Health health;
-    public GameObject UITargetHair;
+
+    [SerializeField]
+    private  GameObject UITargetHair;
+    
+    private void Start() {
+        UITargetHair = GameObject.FindGameObjectWithTag("Hair");
+        UITargetHair.gameObject.GetComponent<Image>().enabled=false;
+    }
     public void OnRaycastHit(RaycastWeapon weapon,Vector3 direction){
-        Debug.Log("Ouch!");
+        
         health.TakeDamage(weapon.damage,direction);
-        UITargetHair.SetActive(true);
+        Debug.Log("Ouch!");
+        UITargetHair.gameObject.GetComponent<Image>().enabled=true;
         Invoke("OfHair",0.1f);
     }
     public void OfHair(){
-        UITargetHair.SetActive(false);
+         UITargetHair.gameObject.GetComponent<Image>().enabled=false;
     }
 }
