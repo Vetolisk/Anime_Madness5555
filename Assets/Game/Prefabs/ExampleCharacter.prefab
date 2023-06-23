@@ -7631,14 +7631,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 2606608814560964560}
     m_Modifications:
     - target: {fileID: 1453116676, guid: 67f716418f7ba2146a845739c7782755, type: 3}
-      propertyPath: damage
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1453116676, guid: 67f716418f7ba2146a845739c7782755, type: 3}
-      propertyPath: fireRate
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1453116676, guid: 67f716418f7ba2146a845739c7782755, type: 3}
       propertyPath: hitEffect
       value: 
       objectReference: {fileID: 5016571519718726662}
@@ -7646,10 +7638,6 @@ PrefabInstance:
       propertyPath: _raycastOrigin
       value: 
       objectReference: {fileID: 2606608814934757335}
-    - target: {fileID: 1453116676, guid: 67f716418f7ba2146a845739c7782755, type: 3}
-      propertyPath: raycastDestination
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1453116676, guid: 67f716418f7ba2146a845739c7782755, type: 3}
       propertyPath: _muzzleFlash.Array.data[0]
       value: 

@@ -483,6 +483,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 5131333105946785527}
+  Cross: {fileID: 0}
+  CrossDamage: []
   UITargetHair: {fileID: 8907221898848732549, guid: 78e50b698ffc8d44698dd2a73a199d61,
     type: 3}
 --- !u!114 &5131333105946785527
@@ -497,7 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79206f1bb62f0444485c36af00435e37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 100
   anim: {fileID: 5072513815034093244}
   currentHealth: 0
 --- !u!195 &6630692539901735063

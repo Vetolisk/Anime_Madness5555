@@ -9,6 +9,8 @@ public class Health : MonoBehaviour
     public float maxHealth;
     public Animator anim;
     NavMeshAgent agent;
+    public float DamageCross;
+    
     [HideInInspector]
      public float currentHealth;
 
@@ -22,6 +24,7 @@ public class Health : MonoBehaviour
         currentHealth=maxHealth;
     }
     public void TakeDamage(float amount, Vector3 direction){
+        DamageCross=amount;
         currentHealth-=amount;
         if(currentHealth<=0.0f){
             agent.enabled=false;

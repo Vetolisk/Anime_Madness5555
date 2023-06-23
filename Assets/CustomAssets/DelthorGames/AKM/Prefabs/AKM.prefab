@@ -2436,7 +2436,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFiring: 0
-  fireRate: 3
+  fireRate: 6
+  damage: 20
   bulletSpeed: 1000
   bulletDrop: 300
   _muzzleFlash:
