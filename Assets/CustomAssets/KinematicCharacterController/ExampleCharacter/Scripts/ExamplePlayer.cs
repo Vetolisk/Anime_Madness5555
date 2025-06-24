@@ -12,6 +12,7 @@ namespace KinematicCharacterController.Examples
         public GameObject UITarget;
         public ExampleCharacterController Character;
         public ExampleCharacterCamera CharacterCamera;
+        public Animator animator;
 
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
@@ -96,10 +97,13 @@ namespace KinematicCharacterController.Examples
                     CharacterCamera.TargetDistance=CharacterCamera.DefaultDistance;
                     CharacterCamera.FollowPointFraming= new Vector2(0f,0f);
                     UITarget.SetActive(false);
-                }else{
+                    animator.SetBool("AIM", false);
+                }
+                else{
                     CharacterCamera.TargetDistance =1f;
                     CharacterCamera.FollowPointFraming= new Vector2(0.3f,0f);
                     UITarget.SetActive(true);
+                    animator.SetBool("AIM", true);
                 }
                 //CharacterCamera.TargetDistance = (CharacterCamera.TargetDistance == 1.5f) ? CharacterCamera.DefaultDistance : 1.5f;
                 Debug.Log("Click!");
