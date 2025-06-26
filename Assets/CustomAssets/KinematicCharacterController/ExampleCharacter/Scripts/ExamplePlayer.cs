@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using KinematicCharacterController;
+using KinematicCharacterController.Examples;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using KinematicCharacterController;
-using KinematicCharacterController.Examples;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 namespace KinematicCharacterController.Examples
 {
@@ -13,6 +14,9 @@ namespace KinematicCharacterController.Examples
         public ExampleCharacterController Character;
         public ExampleCharacterCamera CharacterCamera;
         public Animator animator;
+
+        public GameObject Granade;
+        public Transform player;
 
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
@@ -36,6 +40,12 @@ namespace KinematicCharacterController.Examples
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GameObject CloneEnemy = Instantiate(Granade, player.position, Quaternion.identity) as GameObject;
+                CloneEnemy.name = "Granade";
+                
+            }
             if (Input.GetMouseButtonDown(0))
             {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -95,13 +105,13 @@ namespace KinematicCharacterController.Examples
             {
                 if(CharacterCamera.TargetDistance == 1f ){
                     CharacterCamera.TargetDistance=CharacterCamera.DefaultDistance;
-                    CharacterCamera.FollowPointFraming= new Vector2(0f,0f);
+                    CharacterCamera.FollowPointFraming= new Vector2(0.8f, 0f);
                     UITarget.SetActive(false);
                     animator.SetBool("AIM", false);
                 }
                 else{
                     CharacterCamera.TargetDistance =1f;
-                    CharacterCamera.FollowPointFraming= new Vector2(0.3f,0f);
+                    CharacterCamera.FollowPointFraming= new Vector2(0.8f,0f);
                     UITarget.SetActive(true);
                     animator.SetBool("AIM", true);
                 }

@@ -9,7 +9,7 @@ namespace KinematicCharacterController.Examples
     {
         [Header("Framing")]
         public Camera Camera;
-        public Vector2 FollowPointFraming = new Vector2(0f, 0f);
+        public Vector2 FollowPointFraming = new Vector2(0.8f, 0f);
         public float FollowingSharpness = 10000f;
 
         [Header("Distance")]

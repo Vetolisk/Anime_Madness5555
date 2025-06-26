@@ -32,7 +32,18 @@ public class Health : MonoBehaviour
             Die();
         }
     }
-    
+    public void TakeDamageGranade(float amount)
+    {
+        DamageCross = amount;
+        currentHealth -= amount;
+        if (currentHealth <= 0.0f)
+        {
+            agent.enabled = false;
+            ai.enabled = false;
+            Die();
+        }
+    }
+
     public void Die(){
         anim.SetTrigger("Dead");
         Invoke("DestroyObj",2);

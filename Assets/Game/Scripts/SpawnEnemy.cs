@@ -46,7 +46,7 @@ public class SpawnEnemy : MonoBehaviour
             }
             timeRemaining = oldtime;*/
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+      /*  if (Input.GetKeyDown(KeyCode.Space))
         {   
             GameObject CloneEnemy = Instantiate(preabEnemy, transform.position, Quaternion.identity) as GameObject;
             CloneEnemy.name = "Zombie";
@@ -59,7 +59,7 @@ public class SpawnEnemy : MonoBehaviour
                 
             }
             timeRemaining = oldtime;
-        }
+        }*/
     }
     public void CreateEnemy(){
         // 25 1.25 35 + 25 1.25 45 + 35 1.25 45 + 35 1.25 35
